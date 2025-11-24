@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -33,6 +33,7 @@ public class Program
         const string RankThree = "You are a Magic Breeze Summoner.";
         const string RankFour = "Wow! You can summon dragons without burning the lab down!";
         const string RankFive = "You accomplished Arcane Master rank!";
+        const string PressAnything = "Press any key to continue";
         const int MinHours = 1;
         const int MaxHours = 25;
         const int MinPower = 1;
@@ -109,6 +110,7 @@ public class Program
 
         do
         {
+            Console.Clear();
             Console.WriteLine(MenuTitle);
             Console.WriteLine(Welcome, name, title, level);
             Console.WriteLine(MenuOption1);
@@ -328,6 +330,7 @@ public class Program
                         if (userMine[x, y]== "🪙")
                         {
                             userMine[x, y]= "❌";
+                            hiddenCoins[x, y] = "❌";
                         }
                         else if (hiddenCoins[x, y] == "🪙")
                         {
@@ -464,7 +467,7 @@ public class Program
                             case 1: firstCheck = true; break;
                             case 2: secondCheck = true; break;
                             case 3: thirdCheck = true; break;
-                            case 0: break;
+                            case 0: decyphered = true; break;
                             default: Console.WriteLine(InputErrorMessage); break;
                         }
                         if (firstCheck && secondCheck && thirdCheck)
@@ -480,8 +483,8 @@ public class Program
                     break;
 
             }
+            Console.WriteLine(PressAnything);
             Console.ReadKey();
-            Console.Clear();
 
         } while (chosenOption != 0);
 
